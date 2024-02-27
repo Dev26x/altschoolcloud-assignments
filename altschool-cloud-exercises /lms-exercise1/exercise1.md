@@ -4,13 +4,14 @@
 
 After installing Vagrant and Virtualbox on my macbook, I created a folder/directory for my vagrant instance.
 In my terminal, I ran the following commands:
-`vagrant init ubuntu/focal64`
+
+`vagrant init ubuntu/focal64` -
 This command initialises the vagrant and creates a file containing configurations called Vagrantfile, where ubuntu/focal64 is the vagrant box name for Ubuntu 20.04 LTS.
 
-`vagrant up`
+`vagrant up` -
 This command sets up the virtual machine based on the configuration defined in the Vagrantfile.
 
-`vagrant ssh`
+`vagrant ssh` -
 This command enables user log in to the virtual machine managed by Vagrant using SSH (Secure Shell).
 
 ## Customize Vagrantfile as necessary, with private_network set to dhcp
