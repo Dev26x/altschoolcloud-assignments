@@ -43,7 +43,7 @@ Note: The backup should be a tar archive
 
 timestamp: This variable stores the precise time to uniquely identify the backup.
 
-I created two directories (d1 & d2) and set the source and destination directories based on these directories as command-line arguments.
+I created two directories (dir1 & dir2) and set the source and destination directories based on these directories as command-line arguments.
 
 I set the script to create a filename by combining the timestamp with "_backup.tar.gz".
 
