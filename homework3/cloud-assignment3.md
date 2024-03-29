@@ -27,6 +27,8 @@ To make my ansible playbook clean and reusable, I made use of roles. My roles in
 
 ![roles structure](<altschl-hw3-images/ansible roles.png>)
 
+![roles structure](<altschl-hw3-images/role structure.png>)
+
 ### Tasks:
 
 I defined my tasks using ansible modules such as apt, yum, service and copy.
@@ -52,6 +54,9 @@ This basically holds the variables that I referenced in my tasks.
 The use of roles makes my playbook look very simple and easy to understand. The roles are referenced in the playbook and executed when the playbook is run, installing Apache web server on the slave machines, and also copying web files into the dedicated directory.
 
 ![playbook](altschl-hw3-images/playbook.png)
+
+### Host Inventory:
+This file contains the IP addresss for my slave machines.
 
 #### Executing the Playbook:
 
