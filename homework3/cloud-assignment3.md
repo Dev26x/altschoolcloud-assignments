@@ -7,7 +7,7 @@ Explore using variables in ansible while executing this task.
 
 ## Solution:
 
-I used vagrant for this exercise. To spin up three nodes[Master (Ubuntu) and two slaves (Ubuntu & CentOS)], I had to configure my Vagrantfile to be able to spin up the three machines,and I also set it todynamically assign IP addresses to the machines as shown below. Th machines were assigned the following IP addresses; `192.168.56.7`, `192.168.56.8` & `192.168.56.9`.
+I used vagrant for this exercise. To spin up three nodes[Master (Ubuntu) and two slaves (Ubuntu & CentOS)], I had to configure my Vagrantfile to be able to spin up the three machines,and I also set it to dynamically assign IP addresses to the machines as shown below. The machines were assigned the following IP addresses; `192.168.56.7`, `192.168.56.8` & `192.168.56.9`.
 
 ![Vagrantfile](altschl-hw3-images/Vagrantfile.png)
 
@@ -30,14 +30,14 @@ To make my ansible playbook clean and reusable, I made use of roles. My roles in
 ### Tasks:
 
 I defined my tasks using ansible modules such as apt, yum, service and copy.
-my playbook first updated the package repositories on my slave machines (ubuntu & CentOS), then it installed apache on them. After that was done, the playbook enabled apache on the slave machines. This was followed by copying the web files from my master machine to the `var/www/html` directory on the slave machines. On completion, it is set to notify my handler to restart the apache service on the slave machines.
+My playbook first updated the package repositories on my slave machines (ubuntu & CentOS), then it installed apache on them. After that was done, the playbook enabled apache on the slave machines. This was followed by copying the web files from my master machine to the `var/www/html` directory on the slave machines. On completion, it is set to notify my handler to restart the apache service on the slave machines.
 [I used the when conditional statement to ensure that the right package was installed on the right machine, and also referenced variables from my vars role.]
 
 ![playbook tasks](altschl-hw3-images/tasks.png)
 
 ### Handlers:
 
-My handlers basicly restarted the apache service on the slave machines after receiving a notifications upon completion of my copy task.
+My handlers basicly restarted the apache service on the slave machines after receiving a notification upon completion of my copy task.
 
 ![playbook handlers](altschl-hw3-images/handlers.png)
 
@@ -49,7 +49,7 @@ This basically holds the variables that I referenced in my tasks.
 
 ### Ansible Playbook:
 
-The use of roles makes my playbook look very simple and easy to undertstand. The roles are referenced in the playbook and executed when the playbook is run, installing Apache web server on  the slave machines, and also copying web files into the dedicated directory.
+The use of roles makes my playbook look very simple and easy to understand. The roles are referenced in the playbook and executed when the playbook is run, installing Apache web server on the slave machines, and also copying web files into the dedicated directory.
 
 ![playbook](altschl-hw3-images/playbook.png)
 
