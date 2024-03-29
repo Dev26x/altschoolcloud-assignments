@@ -7,11 +7,11 @@ Explore using variables in ansible while executing this task.
 
 ## Solution:
 
-I used vagrant for this exercise. To spin up three nodes[Master (Ubuntu) and two slaves (Ubuntu & CentOS)], I had to configure my Vagrantfile to be able to spin up the three machines,and I also set it to dynamically assign IP addresses to the machines as shown below. The machines were assigned the following IP addresses; `192.168.56.7`, `192.168.56.8` & `192.168.56.9`.
+I used vagrant for this exercise. To spin up three nodes[Master (Ubuntu) and two slaves (Ubuntu & CentOS)], I had to configure my Vagrantfile to be able to spin up the three machines,and I also set it to dynamically assign IP addresses to the machines as shown below. The machines were assigned the following IP addresses; `192.168.56.7`, `192.168.56.8` & `192.168.56.9`. VM1 (ubuntu) is my master machine.
 
 ![Vagrantfile](altschl-hw3-images/Vagrantfile.png)
 
-After spinning up my machines with `vagrant up` command, I `vagrant ssh` into all three machines, thus opening three tabs in my terminal as seen in the images below.
+After spinning up my machines with `vagrant up` command, I `vagrant ssh` into all three machines, thus opening three tabs in my terminal as seen in the images below. 
 
 VM1 (Ubuntu):![Vm1 ubuntu](altschl-hw3-images/vm1-ubuntu.png)
 
