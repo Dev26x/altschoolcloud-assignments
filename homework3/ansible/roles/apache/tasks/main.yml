@@ -1,0 +1,68 @@
+---
+- name: Update package repository on Debian based distribution
+  when: ansible_os_family == 'Debian'
+  apt:
+    update_cache: yes
+
+- name: Install Apache on Debian based distribution
+  when: ansible_os_family == 'Debian'
+  apt:
+    name: "{{ apache_ubuntu_package }}"
+    state: present
+
+- name: Enable Apache2 service
+  service:
+    name: "{{ apache_service }}"
+    enabled: yes
+  when: ansible_os_family == 'Debian'
+
+- name: Start Apache2 service
+  service:
+    name: "{{ apache_service }}"
+    state: started
+  when: ansible_os_family == 'Debian'
+
+- name: Update package cache on Red Hat based systems
+  when: ansible_os_family == 'RedHat'
+  yum:
+    name: '*'
+    state: latest
+    update_cache: yes
+
+- name: Install Apache on Red Hat based systems
+  when: ansible_os_family == 'RedHat'
+  yum:
+    name: "{{ apache_centos_package  }}"
+    state: present
+
+- name: Enable httpd service
+  service:
+    name: "{{ httpd_service }}"
+    enabled: yes
+  when: ansible_os_family == 'RedHat'
+
+- name: Start httpd service
+  service:
+    name: "{{ httpd_service }}"
+    state: started
+  when: ansible_os_family == 'RedHat'
+
+- name: Copy website files to Apache root directory for Debian based systems
+  when: ansible_os_family == 'Debian'
+  copy:
+    src: "/home/vagrant/ansible/roles/apache/altwork3"
+    dest: /var/www/html/
+    owner: www-data
+    group: www-data
+    mode: 0644
+  notify: Restart Apache2
+
+- name: Copy website files to Apache root directory for Red Hat based systems
+  when: ansible_os_family == 'RedHat'
+  copy:
+    src: "/home/vagrant/ansible/roles/apache/altwork3"
+    dest: /var/www/html/
+    owner: apache
+    group: apache
+    mode: 0755
+  notify: Restart Apache2

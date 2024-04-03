@@ -1,0 +1,7 @@
+---
+- name: Setup server with Apache
+  hosts: all
+  become: yes
+  roles:
+    - apache
+
