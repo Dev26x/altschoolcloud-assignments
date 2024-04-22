@@ -3,7 +3,7 @@ Cloud Engineering Second Semester  Cloud Engineering Second Semester Examination
 IN PROGRESS
 (Deploy LAMP Stack)
 
-Objective
+Objective:
 Automate the provisioning of two Ubuntu-based servers, named “Master” and “Slave”, using Vagrant.
 On the Master node, create a bash script to automate the deployment of a LAMP (Linux, Apache, MySQL, PHP) stack.
 This script should clone a PHP application from GitHub, install all necessary packages, and configure Apache web server and MySQL. 
@@ -194,6 +194,9 @@ I set up ansible to push the bash script I created from my master node to my sla
 
 my ansible directory consists of the following files/directories; host_inventory, deploy_lamp_app_and_cron_job.yml and roles[directory].
 
+I pinged my slave from my master using the ansible ping module `ansible all -i host_inventory -m ping` to test if my slave was accessible and reachable from my host. I received a "pong" response, which confirmed that the host(slave) was reachable and responsive.
+![ansible ping](<images/ansible ping.png>)
+
 Structure of my ansible directory:
 ```
 ansible/
@@ -223,12 +226,43 @@ ansible/
 I chose this approach because of reusability and maintenance of the playbook.
 
 #### Cronjob
-I ran into an interesting problem while attempting to create a cron job to check the server’s uptime every 12 am. The cron module in my playbook was not editing crontab files, which meant that I had to run my Ansible playbook just past 12 am to generate the log file I wanted. After discovering this limitation, I sought a solution that would write the cron job directly into the crontab file. This led me to use the lineinfile module to edit the /etc/crontab file and add my cron job. I realized that this approach is not limited to a particular user, which I found advantageous as it allows us to monitor the entire uptime for the system, regardless of the user.
+I tried two methods of deploying cronjobs via ansible. The `cron` module targets the user's crontab file (`/var/spool/cron/crontabs/<username>`), allowing each user to have their own cron jobs. The `lineinfile` module targets the system-wide crontab file (`/etc/crontab`), which applies to the entire system and is typically used for system-wide tasks.
 
-After deploying via ansible, I checked to confirm my learnings.
-![cronjob check](<images/cronjob check.png>)
+![cronjob deployment](<images/cronjob deploy.png>)
 
-![cronjob proof](<images/cronjob proof.png>)
+Method 1: Using the cron Module
+
+Ease of Use: Straightforward syntax within Ansible playbooks.
+Flexibility: Suitable for managing user-specific cron jobs.
+Target File: Adds cron job to the user's crontab.
+Permission: Runs under the permissions of the user if specified, but defaults to root if it is not specified.
+Pros: Easy management of user-specific tasks.
+Cons: Limited to managing user-specific cron jobs.
+
+Results of Method 1
+
+user_uptime2.log was created in the home directory
+![home dir](<images/home dir.png>)
+
+content of user_uptime2.log shows that uptime was logged at 12am
+![content of user_uptime2.log](<images/user uptime log.png>)
+
+Method 2: Using the lineinfile Module
+
+Ease of Use: Requires managing the entire cron entry as a string.
+Flexibility: Suitable for managing system-wide cron jobs.
+Target File: Adds cron job to the system-wide crontab.
+Permission: Runs under the permissions of the root user.
+Pros: Can manage system-wide tasks, more flexibility in file editing.
+Cons: Not great for managing individual user cron jobs.
+
+Results of Method 2
+
+user_uptime.log was created in the /var/log directory
+![/var/log directory](<images/var log dir.png>)
+
+content of user_uptime.log shows that uptime was logged at 12am
+![content of uptime.log](<images/uptime log.png>)
 
 I tested and ran my ansible playbook
 ![test and run playbook](<images/test and run playbook.png>)
