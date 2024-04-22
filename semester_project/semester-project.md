@@ -195,6 +195,7 @@ I set up ansible to push the bash script I created from my master node to my sla
 my ansible directory consists of the following files/directories; host_inventory, deploy_lamp_app_and_cron_job.yml and roles[directory].
 
 I pinged my slave from my master using the ansible ping module `ansible all -i host_inventory -m ping` to test if my slave was accessible and reachable from my host. I received a "pong" response, which confirmed that the host(slave) was reachable and responsive.
+
 ![ansible ping](<images/ansible ping.png>)
 
 Structure of my ansible directory:
