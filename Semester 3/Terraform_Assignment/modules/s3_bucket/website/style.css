@@ -1,0 +1,266 @@
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+    box-sizing: border-box;
+  }
+  /*
+    2. Remove default margin
+  */
+  * {
+    margin: 0 auto;
+  }
+  /*
+    Typographic tweaks!
+    3. Add accessible line-height
+    4. Improve text rendering
+  */
+  body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    background: rgba(46, 196, 182, .06);
+  }
+  /*
+    5. Improve media defaults
+  */
+  img, picture, video, canvas, svg {
+    display: block;
+    max-width: 100%;
+  }
+  /*
+    6. Remove built-in form typography styles
+  */
+  input, button, textarea, select {
+    font: inherit;
+  }
+  /*
+    7. Avoid text overflows
+  */
+  p, h1, h2, h3, h4, h5, h6 {
+    overflow-wrap: break-word;
+  }
+  /*
+    8. Create a root stacking context
+  */
+  #root, #__next {
+    isolation: isolate;
+  }
+
+  @font-face {
+    font-family: myBrownFont1;
+    src: url(Brown-Font/BrownLight\ Regular.ttf);
+  }
+
+  @font-face {
+    font-family: myBrownFont2;
+    src: url(Brown-Font/Brown\ Bold.ttf);
+  }
+
+  main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 140px;
+  }
+
+  section.left {
+    max-width: 460px;
+    text-align: left;
+    margin-top: -150px;
+    padding-left: 0;
+
+    & img {
+        margin: 0;
+        margin-bottom: 50px;
+        margin-left: -10px;
+    }
+
+    & h1 {
+        margin-bottom: 20px;
+        font-size: 40px;
+        font-family: myBrownFont2;
+        letter-spacing: -0.8px;
+    }
+
+    & p.forMobile {
+      display: none;
+    }
+
+    & p.forLargeScreen {
+      font-size: 18px;
+      font-weight: 300;
+      line-height: 25px;
+      font-family: myBrownFont1;
+      color: rgba(115, 115, 115, 1);
+    }
+
+  }
+
+  section.right {
+    border-radius: 6px;
+    background: #FFF;
+    box-shadow: 0px 4px 50px 0px rgba(4, 8, 19, 0.10);
+    max-width: 580px;
+    height: 679px;
+
+    & form {
+        font-family: 'Sofia Pro', sans-serif;   
+        font-size: 14px;                                  
+        padding: 40px;
+        border-radius: 6px;
+
+        & p {
+            text-align: center;
+            color: rgba(0, 0, 0, 1);
+            font-size: 14px;
+            font-weight: 500;
+            padding: 0;
+            margin: 0;
+        }
+
+        & a {
+            color: rgba(46, 196, 182, 1);
+        }
+
+        & label {
+            font-weight: 600;
+        }
+
+        & input {
+            width: 100%;
+            height: 50px;
+            margin-bottom: 30px;
+            font-weight: 300;
+            padding: 14px 16px;
+        }
+
+        & select {
+            width: 100%;
+            height: 50px;
+            padding: 13.5px 77px 13.5px 16px;
+            margin-bottom: 30px;
+            font-weight: 300;
+        }
+
+        & div.pwdContainer {
+          position: relative;
+        }
+
+        & .eye{
+          position: absolute;
+          top: 39%;
+          right: 4%;
+          z-index: 10;
+          cursor: pointer;
+          color: black;
+        }
+
+        #submit {
+            width: 100%;
+            padding: 16px 219px;
+            background-color: rgba(46, 196, 182, 1);
+            color: rgb(255, 255, 255);
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            border: none;
+            margin-bottom: 16px;
+        }
+
+        & div.line_input {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+        }
+
+        & div.block_input {
+            max-width: 238px;
+            margin: 0;
+            padding: 0;
+        }
+ 
+    }
+  }
+
+@media screen and (max-width: 600px) {
+  body {
+    padding: 0 24px;
+  }
+
+  main {
+    flex-direction: column;
+    padding: 0;
+  
+    & section.left {
+      margin-top: 40px;
+      margin-bottom: 40px;
+      width: 100%;
+      
+      & img {
+        margin-bottom: 30px;
+      }
+
+      & h1 {
+        font-size: 30px;
+        font-weight: 700;
+        font-family: myBrownFont2;
+      }
+
+      & p.forLargeScreen {
+        display: none;
+      }
+
+      & p.forMobile {
+        display: block;
+        font-size: 18px;
+        font-weight: 300;
+        line-height: 25px;
+        font-family: myBrownFont1;
+      }
+    }
+
+    & section.right {
+      width: 100%;
+      height: 870px;
+
+      & form {
+        padding: 24px 16px 30px 16px;
+
+        & #submit {
+          width: 100%;
+          padding: 16px 117px;
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: 0.2px;
+          border: none;
+          margin-bottom: 30px;
+        }
+
+        & p {
+          margin-top: 24px;
+        }
+      }
+
+      & input {
+        height: 48px;
+        margin-bottom: 24px;
+    }
+      
+      & div.line_input {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      & div.block_input {
+        max-width: 100%;
+      }
+    }
+  }
+}
+
+
+
+
+
+  
