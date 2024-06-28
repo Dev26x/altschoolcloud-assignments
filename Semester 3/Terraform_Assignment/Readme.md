@@ -152,25 +152,25 @@ cloudfront distribution
 
 
 custom domain
-![Alt text](<../images/Screenshot 2024-06-28 at 18.58.18.png>)
+![custom domain](<../images/Screenshot 2024-06-28 at 18.58.18.png>)
 
 
 terraform apply ran successfully
-![Alt text](<../images/Screenshot 2024-06-28 at 19.49.49.png>)
+![terraform apply success](<../images/Screenshot 2024-06-28 at 19.49.49.png>)
 
 
 s3 bucket provisioned
-![Alt text](<../images/Screenshot 2024-06-28 at 19.51.51.png>)
+![s3 bucket provisioned](<../images/Screenshot 2024-06-28 at 19.51.51.png>)
 
 
 static website files uploaded successfully
-![Alt text](<../images/Screenshot 2024-06-28 at 19.51.59.png>)
+![static website files uploaded ](<../images/Screenshot 2024-06-28 at 19.51.59.png>)
 
 
 route53 hosted zone
-![Alt text](<../images/Screenshot 2024-06-28 at 19.52.32.png>)
+![route53 hosted zone](<../images/Screenshot 2024-06-28 at 19.52.32.png>)
 
 
 ssl certificate
-![Alt text](<../images/Screenshot 2024-06-28 at 19.53.01.png>)
+![ssl certificate](<../images/Screenshot 2024-06-28 at 19.53.01.png>)
 
