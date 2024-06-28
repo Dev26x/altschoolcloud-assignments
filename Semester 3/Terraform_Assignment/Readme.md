@@ -102,7 +102,9 @@ certificate.tf
 
 Contains a data block that retrieves an existing AWS Certificate Manager (ACM) certificate. This is useful in this project because I created and validated my certificate on the aws console outside of Terraform, and needed to reference the SSL/TLS certificate.
 
+
 *Improvements to make include creating the hosted zone and requesting for the certificate via terraform. Also using api endpoint*
+
 
 ## Modules
 
@@ -145,7 +147,9 @@ terraform plan: reviews the planned changes.
 
 terraform apply: apply the changes.
 
+
 *My variables are alllocated in my terraform.tfvars file which i used gitignore to avoid pushing to my git repo.*
+
 
 ## Results of terraform configuration
 
